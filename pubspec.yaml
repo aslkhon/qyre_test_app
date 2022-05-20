@@ -1,0 +1,50 @@
+name: qyre_test_app
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+
+  bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
+
+  dartz: ^0.10.1
+
+  # SL
+  injectable: ^1.5.3
+
+  # Data Classes
+  freezed_annotation: ^2.0.3
+  json_annotation: ^4.5.0
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  # Testing
+  flutter_test:
+    sdk: flutter
+
+  bloc_test: ^9.0.3
+  mocktail: ^0.3.0
+
+  # Code Generation
+  build_runner: ^2.1.11
+
+  injectable_generator: ^1.5.3
+
+  freezed: ^2.0.3+1
+  json_serializable: ^6.2.0
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
