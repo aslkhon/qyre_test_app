@@ -67,12 +67,15 @@ class _ProductionsBlockContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(
+            height: 8.0,
+          ),
           Text(
             'Today\'s productions',
             style: context.textTheme.headline1,
           ),
           const SizedBox(
-            height: 10.0,
+            height: 14.0,
           ),
           BlocBuilder<ProductionsBloc, ProductionsState>(
             builder: (context, state) {
