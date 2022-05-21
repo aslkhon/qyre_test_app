@@ -55,6 +55,7 @@ flutter:
 
   assets:
   - assets/images/vector/
+  - assets/images/raster/
 
   fonts:
     - family: Matter TRIAL

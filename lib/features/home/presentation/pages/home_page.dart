@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qyre_test_app/features/availability/availability.dart';
+import 'package:qyre_test_app/features/productions/productions.dart';
 import 'dart:ui' as ui;
 
 import 'package:qyre_test_app/features/suggestions/presentation/widgets/suggestions_block.dart';
@@ -80,7 +81,7 @@ class _HomePageScrollViewState extends State<_HomePageScrollView> {
           ),
           AvailabilityBlockVisible(),
           SuggestionsBlock(),
-          ActionsBlock(),
+          ProductionsBlock(),
           ActionsBlock(),
           ActionsBlock(),
           ActionsBlock(),

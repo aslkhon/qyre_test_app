@@ -50,7 +50,6 @@ final defaultTheme = ThemeData(
     headline6: TextStyle(
       color: Palette.black10,
       fontWeight: FontWeight.w400,
-      height: 9.5,
       fontSize: 10.0,
     ),
 

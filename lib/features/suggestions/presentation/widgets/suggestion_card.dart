@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/const/qyre_icons.dart';
+import '../../../../core/const/const.dart';
 import '../../../../core/utils/utils.dart';
 
 class SuggestionCard extends StatelessWidget {
