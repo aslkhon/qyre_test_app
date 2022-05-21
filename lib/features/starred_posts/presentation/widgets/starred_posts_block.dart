@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:qyre_test_app/features/starred_posts/presentation/widgets/starred_post.dart';
 
 import '../../../../core/utils/utils.dart';
-import 'job_offer.dart';
 
-class JobOffersBlock extends StatelessWidget {
-  const JobOffersBlock({Key? key}) : super(key: key);
+class StarredPostsBlock extends StatelessWidget {
+  const StarredPostsBlock({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final offer = JobOffer(
-      title: 'Boom Operator',
-      companyName: 'Masterchef',
-      dateTime: DateTime(2022, 1, 12),
-      beginDate: DateTime(2022, 1, 14),
-      endDate: DateTime(2022, 2, 23),
-      onPressed: () {},
-    );
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
       child: Column(
@@ -26,24 +17,24 @@ class JobOffersBlock extends StatelessWidget {
             height: 8.0,
           ),
           Text(
-            'My job offers',
+            'Starred posts',
             style: context.textTheme.headline1,
           ),
           const SizedBox(
             height: 14.0,
           ),
-          Wrap(
-            direction: Axis.vertical,
-            spacing: 10.0,
-            children: [
-              offer,
-              offer,
-            ],
+          StarredPost(
+            title: 'Qyre US Production',
+            subtitle: 'Updated priviligies for current',
+            body:
+                'I changed your admin roles to posters. With that you can’t send out offers. Just use the communication tool to get all the features!',
+            dateTime: DateTime(2022, 5, 18),
+            onPressed: () {},
           ),
           // const SizedBox(
           //   height: 14.0,
           // ),
-          // const JobOffersPlaceHolder(),
+          // const StarredPostsPlaceholder(),
         ],
       ),
     );

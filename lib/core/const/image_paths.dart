@@ -14,6 +14,8 @@ abstract class ImagePaths {
 
   static const favorites = '$_vectors/favorites.svg';
 
+  static const starredPostIcons = '$_vectors/starred_post_icons.svg';
+
   /// Raster Images
   static const _rasters = 'assets/images/raster';
 

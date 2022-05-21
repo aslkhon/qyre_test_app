@@ -6,6 +6,7 @@ import '../../../../core/utils/utils.dart';
 import '../../../availability/availability.dart';
 import '../../../job_offers/job_offers.dart';
 import '../../../productions/productions.dart';
+import '../../../starred_posts/starred_posts.dart';
 import '../../../suggestions/suggestions.dart';
 import '../../../../injection.dart';
 import '../blocs/extend_app_bar_cubit.dart';
@@ -157,7 +158,11 @@ class _HomePageScrollViewState extends State<_HomePageScrollView> {
           SuggestionsBlock(),
           ProductionsBlock(),
           ActionsBlock(),
-          JobOffersBlock()
+          JobOffersBlock(),
+          StarredPostsBlock(),
+          SizedBox(
+            height: 30.0,
+          ),
         ],
       ),
     );

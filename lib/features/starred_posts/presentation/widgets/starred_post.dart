@@ -1,44 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../app/presentation/theme/palette.dart';
+import '../../../../core/const/const.dart';
 import '../../../../core/utils/utils.dart';
 
-class JobOffer extends StatelessWidget {
+class StarredPost extends StatelessWidget {
   final String title;
-  final String companyName;
+  final String subtitle;
+  final String body;
   final DateTime dateTime;
-  final DateTime beginDate;
-  final DateTime endDate;
   final VoidCallback onPressed;
 
-  const JobOffer({
+  const StarredPost({
     Key? key,
     required this.title,
-    required this.companyName,
+    required this.subtitle,
+    required this.body,
     required this.dateTime,
-    required this.beginDate,
-    required this.endDate,
     required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final dateFormat = DateFormat('MMM d, yyyy');
-    final style = context.textTheme.headline6?.copyWith(fontSize: 12.0);
-
-    int days = daysBetween(beginDate, endDate);
+    final days = daysBetween(dateTime, DateTime.now());
 
     return InkWell(
       onTap: onPressed,
       borderRadius: BorderRadius.circular(4.0),
       child: Ink(
-        width: MediaQuery.of(context).size.width - 32.0,
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4.0),
-          color: context.theme.colorScheme.surface,
-        ),
+            color: context.theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(4.0)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -55,8 +49,8 @@ class JobOffer extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  dateFormat.format(dateTime),
-                  style: style,
+                  '$days days ago',
+                  style: context.textTheme.headline6?.copyWith(fontSize: 12.0),
                 ),
               ],
             ),
@@ -65,27 +59,30 @@ class JobOffer extends StatelessWidget {
               thickness: 1.5,
               height: 20.0,
             ),
-            Text(
-              companyName,
-              style: context.textTheme.bodyText1,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: Text(
+                    subtitle,
+                    style: context.textTheme.bodyText1,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                SvgPicture.asset(
+                  ImagePaths.starredPostIcons,
+                  width: 84.0,
+                  height: 24.0,
+                )
+              ],
             ),
             const SizedBox(
-              height: 5.0,
+              height: 8.0,
             ),
-            DefaultTextStyle(
-              style: style ?? const TextStyle(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '${dateFormat.format(beginDate)} - ${dateFormat.format(endDate)}',
-                  ),
-                  Text('$days days'),
-                ],
-              ),
-            )
+            Text(
+              body,
+            ),
           ],
         ),
       ),
