@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qyre_test_app/core/utils/utils.dart';
+
+import '../../../../../core/utils/utils.dart';
 
 class ActionsBlockItem extends StatelessWidget {
   final String imageSrc;
@@ -39,6 +40,7 @@ class ActionsBlockItem extends StatelessWidget {
     return Expanded(
       child: InkWell(
         onTap: onPressed,
+        borderRadius: BorderRadius.circular(4.0),
         child: Ink(
           height: 140.0,
           padding: const EdgeInsets.symmetric(vertical: 17.0, horizontal: 12.0),
