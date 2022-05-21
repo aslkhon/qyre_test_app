@@ -79,3 +79,6 @@ flutter:
         - asset: assets/fonts/matter/MatterTRIAL-Heavy.otf
           weight: 900
           style: normal
+    - family:  QyreIcons
+      fonts:
+        - asset: assets/fonts/icons/QyreIcons.ttf
