@@ -27,6 +27,7 @@ dependencies:
   json_annotation: ^4.5.0
 
   intl: ^0.17.0
+  flutter_svg: ^1.0.3
 
   cupertino_icons: ^1.0.2
 
@@ -51,6 +52,9 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  assets:
+  - assets/images/vector/
 
   fonts:
     - family: Matter TRIAL
