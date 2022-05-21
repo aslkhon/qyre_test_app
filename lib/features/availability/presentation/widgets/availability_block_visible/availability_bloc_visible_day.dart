@@ -63,10 +63,7 @@ class AvailabilityBlockVisibleDay extends StatelessWidget {
           ),
           Text(
             DateFormat('MMM').format(dateTime),
-            style: context.textTheme.bodyText1?.copyWith(
-              color: Palette.white,
-              fontSize: 10.0,
-            ),
+            style: context.textTheme.headline5,
           ),
           const SizedBox(
             height: 2.0,

@@ -60,10 +60,7 @@ class AvailabilityBlockReducedDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = context.textTheme.bodyText1?.copyWith(
-      color: Palette.white,
-      fontSize: 10.0,
-    );
+    final textStyle = context.textTheme.headline5;
 
     return Container(
       height: 36.0,

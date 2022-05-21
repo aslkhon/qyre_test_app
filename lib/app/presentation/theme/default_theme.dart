@@ -40,7 +40,12 @@ final defaultTheme = ThemeData(
     headline4: TextStyle(
       color: Palette.white,
       fontWeight: FontWeight.w700,
-      fontSize: 16.0,
+      fontSize: 14.0,
+    ),
+    headline5: TextStyle(
+      color: Palette.white,
+      fontWeight: FontWeight.w500,
+      fontSize: 10.0,
     ),
     headline6: TextStyle(
       color: Palette.black10,
