@@ -10,6 +10,10 @@ abstract class ImagePaths {
 
   static const productions = '$_vectors/productions.svg';
 
+  static const jobOffers = '$_vectors/job_offers.svg';
+
+  static const favorites = '$_vectors/favorites.svg';
+
   /// Raster Images
   static const _rasters = 'assets/images/raster';
 

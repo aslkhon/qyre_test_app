@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/const/const.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../availability/availability.dart';
+import '../../../job_offers/job_offers.dart';
 import '../../../productions/productions.dart';
 import '../../../suggestions/suggestions.dart';
 import '../../../../injection.dart';
@@ -156,6 +157,7 @@ class _HomePageScrollViewState extends State<_HomePageScrollView> {
           SuggestionsBlock(),
           ProductionsBlock(),
           ActionsBlock(),
+          JobOffersBlock()
         ],
       ),
     );
