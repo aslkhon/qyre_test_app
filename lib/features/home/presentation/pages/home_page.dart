@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qyre_test_app/features/availability/availability.dart';
-import 'package:qyre_test_app/features/home/presentation/widgets/actions_block/actions_block.dart';
 import 'dart:ui' as ui;
+
+import 'package:qyre_test_app/features/suggestions/presentation/widgets/suggestions_block.dart';
+
+import '../../../../injection.dart';
+import '../widgets/actions_block/actions_block.dart';
 
 class HomePage extends StatelessWidget {
   static const routeName = '/home';
@@ -10,11 +15,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) =>
+          getIt<AvailabilityBloc>()..add(const AvailabilityEvent.fetch()),
+      child: const _HomePageContent(),
+    );
+  }
+}
+
+class _HomePageContent extends StatelessWidget {
+  const _HomePageContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
-            const HomePageContent(),
+            const _HomePageScrollView(),
             ClipRect(
               child: BackdropFilter(
                 filter: ui.ImageFilter.blur(
@@ -40,26 +58,28 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class HomePageContent extends StatefulWidget {
-  const HomePageContent({
+class _HomePageScrollView extends StatefulWidget {
+  const _HomePageScrollView({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<HomePageContent> createState() => _HomePageContentState();
+  State<_HomePageScrollView> createState() => _HomePageScrollViewState();
 }
 
-class _HomePageContentState extends State<HomePageContent> {
+class _HomePageScrollViewState extends State<_HomePageScrollView> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           SizedBox(
             height: 64.0,
           ),
           AvailabilityBlockVisible(),
+          SuggestionsBlock(),
           ActionsBlock(),
           ActionsBlock(),
           ActionsBlock(),
