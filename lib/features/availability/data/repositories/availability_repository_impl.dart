@@ -7,10 +7,10 @@ import '../../domain/domain.dart';
 @Injectable(as: AvailabilityRepository)
 class AvailabilityRepositoryImpl extends AvailabilityRepository {
   bool? _isAvailable(int dayIndex) {
-    if (dayIndex == 0 || dayIndex == 3) {
+    if (dayIndex == 1) {
       return true;
     }
-    if (dayIndex == 1) {
+    if (dayIndex == 0 || dayIndex == 3) {
       return false;
     }
     return null;
