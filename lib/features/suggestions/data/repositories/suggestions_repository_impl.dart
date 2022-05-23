@@ -8,7 +8,7 @@ import '../../domain/domain.dart';
 class SuggestionsRepositoryImpl implements SuggestionsRepository {
   @override
   Future<Either<Failure, double>> getProfileCompletness() async {
-    return const Right(.75);
+    return const Right(0.75);
   }
 
   @override
