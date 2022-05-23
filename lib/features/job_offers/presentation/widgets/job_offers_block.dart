@@ -22,15 +22,12 @@ class JobOffersBlock extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 8.0,
-          ),
-          Text(
-            'My job offers',
-            style: context.textTheme.headline1,
-          ),
-          const SizedBox(
-            height: 14.0,
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0, bottom: 12.0),
+            child: Text(
+              'My job offers',
+              style: context.textTheme.headline1,
+            ),
           ),
           Wrap(
             direction: Axis.vertical,

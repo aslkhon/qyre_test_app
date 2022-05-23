@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qyre_test_app/features/home/presentation/widgets/app_bar/config/app_bar_consts.dart';
+import 'package:qyre_test_app/features/home/presentation/widgets/navigation_bar/qyre_navigation_bar_item_icon.dart';
 
 import '../../../../core/const/const.dart';
 import '../../../../core/utils/utils.dart';
@@ -47,54 +49,39 @@ class _HomePageContent extends StatelessWidget {
       selectedItemColor: context.theme.colorScheme.background,
       unselectedItemColor: context.theme.colorScheme.surface,
       backgroundColor: context.theme.colorScheme.onBackground,
-      items: [
-        const BottomNavigationBarItem(
-            icon: Icon(QyreIcons.home), label: 'home'),
-        const BottomNavigationBarItem(
-            icon: Icon(QyreIcons.menu), label: 'menu'),
+      items: const [
         BottomNavigationBarItem(
-            icon: Stack(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(QyreIcons.bell),
-                ),
-                _badge(context)
-              ],
+            icon: QyreNavigationBarItemIcon(
+              icon: QyreIcons.home,
+            ),
+            label: 'home'),
+        BottomNavigationBarItem(
+            icon: QyreNavigationBarItemIcon(
+              icon: QyreIcons.menu,
+            ),
+            label: 'menu'),
+        BottomNavigationBarItem(
+            icon: QyreNavigationBarItemIcon(
+              icon: QyreIcons.bell,
+              notificationsCount: 2,
             ),
             label: 'notifications'),
       ],
     );
   }
 
-  Positioned _badge(BuildContext context) {
-    return Positioned(
-      top: 0,
-      right: 0,
-      child: Container(
-        height: 16.0,
-        width: 16.0,
-        decoration: BoxDecoration(
-          color: context.theme.colorScheme.secondary,
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          '2',
-          style: context.textTheme.headline5,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final consts =
+        AppBarConsts(viewOffsetTop: MediaQuery.of(context).viewPadding.top);
+
     return Scaffold(
+      backgroundColor: context.theme.colorScheme.background,
       body: Stack(
-        children: const [
-          _HomePageScrollView(),
-          QyreAppBar(),
-        ],
+        children: [
+          QyreAppBar(consts: consts),
+          _HomePageScrollView(consts: consts),
+        ].reversed.toList(),
       ),
       bottomNavigationBar: _bottomNavigation(context),
     );
@@ -102,8 +89,11 @@ class _HomePageContent extends StatelessWidget {
 }
 
 class _HomePageScrollView extends StatefulWidget {
+  final AppBarConsts consts;
+
   const _HomePageScrollView({
     Key? key,
+    required this.consts,
   }) : super(key: key);
 
   @override
@@ -130,7 +120,8 @@ class _HomePageScrollViewState extends State<_HomePageScrollView> {
   }
 
   void _onScroll() {
-    if (_scrollController.position.pixels <= 112.0) {
+    if (_scrollController.position.pixels <=
+        widget.consts.offsetBeforeReduction) {
       if (_extendAppBar) {
         _extendAppBar = false;
         context.read<ExtendAppBarCubit>().reduce();
@@ -150,17 +141,17 @@ class _HomePageScrollViewState extends State<_HomePageScrollView> {
       physics: const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           SizedBox(
-            height: 80.0,
+            height: widget.consts.contentOffset,
           ),
-          AvailabilityBlockVisible(),
-          SuggestionsBlock(),
-          ProductionsBlock(),
-          ActionsBlock(),
-          JobOffersBlock(),
-          StarredPostsBlock(),
-          SizedBox(
+          const AvailabilityBlockVisible(),
+          const SuggestionsBlock(),
+          const ProductionsBlock(),
+          const ActionsBlock(),
+          const JobOffersBlock(),
+          const StarredPostsBlock(),
+          const SizedBox(
             height: 30.0,
           ),
         ],
